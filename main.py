@@ -16,7 +16,7 @@ from tree import build_tree_json, build_family_chart_data
 # App setup
 # ---------------------------------------------------------------------------
 
-tailwind = Script(src="https://cdn.tailwindcss.com")
+tailwind = Script(src="/vendor/tailwind.js")
 app, rt = fast_app(
     hdrs=(tailwind,),
     pico=False,
@@ -387,7 +387,7 @@ def get():
     return page_shell(
         # family-chart CSS + fix for hardcoded white stroke on connection lines
         Link(rel="stylesheet",
-             href="https://cdn.jsdelivr.net/npm/family-chart@0.9.0/dist/styles/family-chart.css"),
+             href="/vendor/family-chart.css"),
         Style("""
             #tree-fc-container path.link { stroke: #6b7280 !important; }
             #tree-fc-container path.link_upper,
@@ -436,8 +436,8 @@ def get():
                 Span("Other / Unknown", cls="text-sm text-gray-600"),
                 cls="mt-3 flex flex-wrap items-center gap-1"
             ),
-            Script(src="https://cdn.jsdelivr.net/npm/d3@7/dist/d3.min.js"),
-            Script(src="https://cdn.jsdelivr.net/npm/family-chart@0.9.0/dist/family-chart.min.js"),
+            Script(src="/vendor/d3.min.js"),
+            Script(src="/vendor/family-chart.min.js"),
             Script(src="/tree.js"),
         ),
         title="Family Tree — FamilyView",
