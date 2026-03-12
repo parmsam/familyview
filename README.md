@@ -10,14 +10,15 @@ A local family registry and tree viewer built with Python, FastHTML, and SQLite.
 - **Relationship search** — search by name or relationship label (e.g. "first cousin", "uncle", "cousin once removed")
 - **Interactive family tree** — force-directed D3.js graph with zoom, pan, and drag; click any node to view that person's detail page
 
-## Setup
+## Setup & Usage
 
 ```bash
-pip install -r requirements.txt
-python3 main.py
+python3 cli.py setup   # install dependencies
+python3 cli.py start   # start the server → http://localhost:5001
+python3 cli.py start --open  # start and open browser automatically
+python3 cli.py close   # stop the server
+python3 cli.py open    # open the browser (server already running)
 ```
-
-Open http://localhost:5001 in your browser.
 
 ## Usage
 
@@ -37,6 +38,7 @@ Open http://localhost:5001 in your browser.
 ## Project Structure
 
 ```
+cli.py          — setup and launch CLI
 main.py         — routes and app entry point
 db.py           — database schema and query helpers
 relations.py    — relationship inference engine (LCA graph traversal)

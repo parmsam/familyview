@@ -5,9 +5,16 @@ Local-only family tree viewer and editor built with Python FastHTML + SQLite.
 ## Running
 
 ```bash
-pip install -r requirements.txt
-python main.py
-# Opens at http://localhost:5001
+python3 cli.py setup          # install deps + create static dirs
+python3 cli.py start          # start the server (http://localhost:5001)
+python3 cli.py start --open   # start + auto-open browser
+python3 cli.py close          # stop the running server (SIGTERM on port 5001)
+python3 cli.py open           # open browser (server already running)
+```
+
+Direct start (bypasses CLI):
+```bash
+python3 main.py
 ```
 
 ## Stack
@@ -24,6 +31,7 @@ python main.py
 ## File Map
 
 ```
+cli.py          — Setup and launch CLI (setup / start / close / open)
 main.py         — App entry point + all route handlers
 db.py           — Schema DDL, PRAGMA setup, raw query helpers
 relations.py    — Relationship inference engine (LCA graph traversal)
